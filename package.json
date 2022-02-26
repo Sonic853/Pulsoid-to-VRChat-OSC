@@ -1,0 +1,15 @@
+{
+  "name": "pulsoid-to-vrchat-osc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "run": "node --inspect app.js"
+  },
+  "author": "Sonic853",
+  "license": "MIT",
+  "dependencies": {
+    "node-osc": "^6.1.14",
+    "ws": "^8.5.0"
+  }
+}

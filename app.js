@@ -1,9 +1,9 @@
 
 const { Client } = require('node-osc');
 const WebSocket = require('ws');
-import * as readline from 'readline'
-import { stdin as input, stdout as output } from 'node:process'
-const rl = readline.createInterface({ input, output })
+const readline = require('readline');
+const { stdin:input, stdout:output } = require('node:process');
+const rl = readline.createInterface({ input, output });
 /**
  * @type {string}
  */

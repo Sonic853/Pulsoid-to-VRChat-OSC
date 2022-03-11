@@ -10,17 +10,17 @@ minasaki
 
 ## 操作方法？
 1. 打开小米运动，选择要用的手环，打开蓝牙广播和运动心率广播<br>
-![Screenshot_20220227-031824757.jpg](https://vip2.loli.io/2022/02/27/7CKeypYB3AQHo2z.jpg)
+![20220227-031824757.jpg](https://vip2.loli.io/2022/02/27/7CKeypYB3AQHo2z.jpg)
 2. 手机安装Pulsoid并注册帐号
 3. 连接要使用的手环<br>
-![Screenshot_20220227-031829402.jpg](https://vip1.loli.io/2022/02/27/ik9vORBDCKHMZmr.jpg)
+![20220227-031829402.jpg](https://vip1.loli.io/2022/02/27/ik9vORBDCKHMZmr.jpg)
 4. 登录 [Pulsoid.net](https://pulsoid.net/) 打开 [Widgets](https://pulsoid.net/ui/configuration) 随便选一个 Widgets，复制其 URL<br>
-![Snipaste_2022-02-27_03-23-42.png](https://vip2.loli.io/2022/02/27/pNXmt8CgcndbhoK.png)
+![2022-02-27_03-23-42.png](https://vip2.loli.io/2022/02/27/pNXmt8CgcndbhoK.png)
 5. 在新窗口打开控制台，粘贴 Widgets URL 到地址栏，把 Websocket 类型的 URL 复制下来<br>
-![Snipaste_2022-02-27_03-27-21.png](https://vip1.loli.io/2022/02/27/PQadv38y5OstGlR.png)
-6. 打开 app.js，把 wsURL 内容改为Websocket URL。<br>
-![Snipaste_2022-02-27_03-51-33.png](https://vip1.loli.io/2022/02/27/r8niHf2LqC5zAZN.png)
-7. run.bat
+![2022-02-27_03-27-21.png](https://vip1.loli.io/2022/02/27/PQadv38y5OstGlR.png)
+6. run.bat
+7. 把 Websocket URL 粘贴上去。
+![2022-03-11_11-41-48.png](https://vip2.loli.io/2022/03/11/jMRU5XFLzH3C6mI.png)
 
 ## 示例 Avatar
 [Vard](https://twitter.com/VardFree) 制作了该 Avatar，你可以使用他的 Avatar 来测试：[Example_Avatar.unitypackage](https://github.com/vard88508/vrc-osc-miband-hrm/releases) (该 Avatar 使用了 RED_SIM 的 [Simple counter shader](https://patreon.com/posts/simple-counter-62864361) 来显示数字)

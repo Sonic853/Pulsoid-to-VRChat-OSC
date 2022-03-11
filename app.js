@@ -1,34 +1,59 @@
 
 const { Client } = require('node-osc');
 const WebSocket = require('ws');
-
-// 编辑这里：
-const wsURL = 'wss://ramiel.pulsoid.net/listen/436ygggg-4tre-35gd-3fge-asdqntgfv219'
-
-let Start = () => {
-    const ws = new WebSocket(wsURL)
-    ws.on('open', e => {
-        console.log('Open,', e);
-        ws.on('message', ev => {
-            const data = JSON.parse(ev)
+import * as readline from 'readline'
+import { stdin as input, stdout as output } from 'node:process'
+const rl = readline.createInterface({ input, output })
+/**
+ * @type {string}
+ */
+rl.question('Enter your wsURL: ', (wsURL) => {
+    if (wsURL == '') return console.log('no Enter.');
+    let Start = () => {
+        const ws = new WebSocket(wsURL)
+        ws.on('open', e => {
+            console.log('Open,', e);
             const client = new Client('localhost', 9000);
-            const Heartrate = {
-                address: '/avatar/parameters/Heartrate',
-                args:
-                {
-                    type: 'f',
-                    // 参考自该代码：
-                    // https://github.com/vard88508/vrc-osc-miband-hrm/blob/030f757dc540955e8f42fdbd603c341e333b27ef/app.js#L26
-                    value: data.data.heartRate / 127 - 1
-                }
-            };
-            console.log(Heartrate);
-            client.send(Heartrate);
+            ws.on('message', ev => {
+                const data = JSON.parse(ev)
+                if (!data.data.heartRate) return console.log('Got heart rate: 0 bpm, skipping parameter update...');
+                console.log('Got heart rate: %s bpm', data.data.heartRate);
+                // 参考自该代码：
+                // https://github.com/vard88508/vrc-osc-miband-hrm/blob/f60c3422c36921d317168ed38b1362528e8364e9/app.js#L24-L50
+                const Heartrate = {
+                    address: '/avatar/parameters/Heartrate',
+                    args:
+                    {
+                        type: 'f',
+                        value: data.data.heartRate / 127 - 1
+                    }
+                };
+                const Heartrate2 = {
+                    address: "/avatar/parameters/Heartrate2",
+                    args:
+                    {
+                        type: "f",
+                        value: data.data.heartRate / 255
+                    }
+                };
+                const Heartrate3 = {
+                    address: "/avatar/parameters/Heartrate3",
+                    args:
+                    {
+                        type: "f",
+                        value: data.data.heartRate
+                    }
+                };
+                client.send(Heartrate);
+                client.send(Heartrate2);
+                client.send(Heartrate3);
 
+            })
         })
-    })
-    ws.on('close', e => {
-        Start();
-    })
-}
-Start();
+        ws.on('close', e => {
+            Start();
+        })
+    }
+    Start();
+})
+

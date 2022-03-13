@@ -13,11 +13,11 @@ rl.question('Enter your wsURL: ', (wsURL) => {
         const ws = new WebSocket(wsURL)
         ws.on('open', e => {
             console.log('Open,', e);
-            const client = new Client('localhost', 9000);
             ws.on('message', ev => {
                 const data = JSON.parse(ev)
                 if (!data.data.heartRate) return console.log('Got heart rate: 0 bpm, skipping parameter update...');
                 console.log('Got heart rate: %s bpm', data.data.heartRate);
+                const client = new Client('localhost', 9000);
                 // 参考自该代码：
                 // https://github.com/vard88508/vrc-osc-miband-hrm/blob/f60c3422c36921d317168ed38b1362528e8364e9/app.js#L24-L50
                 const Heartrate = {

@@ -29,3 +29,4 @@ minasaki
 
 ## 参考了以下代码：
 [Mi Band/Amazfit OSC heart rate monitor for VRChat](https://github.com/vard88508/vrc-osc-miband-hrm)
+[Mi Band Heartrate](https://github.com/mkc1370/miband-heartrate-osc)

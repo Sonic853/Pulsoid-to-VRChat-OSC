@@ -56,7 +56,7 @@ rl.question('Enter your wsURL: ', (wsURL) => {
           address: "/avatar/parameters/Heartrate3",
           args:
           {
-            type: "f",
+            type: "i",
             value: data.data.heartRate
           }
         };
@@ -64,7 +64,7 @@ rl.question('Enter your wsURL: ', (wsURL) => {
           address: "/avatar/parameters/HeartRateInt",
           args:
           {
-            type: "f",
+            type: "i",
             value: data.data.heartRate
           }
         };

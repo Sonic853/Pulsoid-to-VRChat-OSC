@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {
     "node-osc": "^6.1.14",
+    "open": "^8.4.0",
     "ws": "^8.5.0"
   }
 }

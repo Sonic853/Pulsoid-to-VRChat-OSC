@@ -4,7 +4,7 @@ const pulsoidApi = {
   baseUrl: Buffer.from("aHR0cHM6Ly9wdWxzb2lkLm5ldC9vYXV0aDIvYXV0aG9yaXpl", "base64").toString(),
   // TODO: waiting for get client_id
   client_id: Buffer.from("", "base64").toString(),
-  redirect_uri: "http://localhost",
+  redirect_uri: "http://localhost:8853",
   response_type: "token",
   scope: "data:heart_rate:read",
   state: getUuid(true),

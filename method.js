@@ -24,13 +24,6 @@ class WS {
   }
   async connect(callback) {
     this.ws = new WebSocket(this.url)
-    this.ws.onopen = e => {
-      this.#retry = 0
-      if (this.#hbData !== "") this.#hbInterval = setInterval(() => {
-        this.ws.send(this.#hbData)
-      }, this.#hbTime)
-      return callback ? callback() : Promise.resolve()
-    }
     this.ws.onmessage = e => {
       this.#delegats.run(e)
     }
@@ -42,6 +35,13 @@ class WS {
         this.#retry++
         this.connect()
       }
+    }
+    this.ws.onopen = e => {
+      this.#retry = 0
+      if (this.#hbData !== "") this.#hbInterval = setInterval(() => {
+        this.ws.send(this.#hbData)
+      }, this.#hbTime)
+      return callback ? callback() : Promise.resolve()
     }
   }
   send(data) {

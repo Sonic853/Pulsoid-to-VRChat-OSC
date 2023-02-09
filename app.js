@@ -93,7 +93,9 @@ rl.question('Enter Pulsoid Auth Token: ', (token) => {
       });
     })
     ws.realclose = false
-    ws.connect()
+    ws.connect().then(() => {
+      console.log('Connected to Pulsoid.')
+    })
   }
   Start()
 })

@@ -21,8 +21,20 @@ minasaki
 4. run.bat
 5. 程序会自动打开浏览器，要求您登录验证，登录之后点击“Copy to clipboard”按钮复制验证码。
    ![2022-03-11_11-41-48.png](https://vip2.loli.io/2022/03/11/jMRU5XFLzH3C6mI.png)
-5. 把验证码粘贴上去。
+6. 把验证码粘贴上去。
    ![2023-02-09_22-08-39.png](https://vip2.loli.io/2023/02/09/kcSqLRln89oOuKT.png)
+
+## 发送的参数？
+
+| 地址                                | 类型  | 参数描述                    |
+| ----------------------------------- | ----- | --------------------------- |
+| /avatar/parameters/HeartRateInt     | Int   | Int，0到255                 |
+| /avatar/parameters/HeartRate3       | Int   | 参考 HeartRateInt          |
+| /avatar/parameters/HeartRateFloat   | Float | Float ([0, 255] -> [-1, 1]) |
+| /avatar/parameters/HeartRate        | Float | 参考 HeartRateFloat        |
+| /avatar/parameters/HeartRateFloat01 | Float | Float ([0, 255] -> [0, 1])  |
+| /avatar/parameters/HeartRate2       | Float | 参考 HeartRateFloat01       |
+| /avatar/parameters/HeartBeatToggle  | Bool  | 更新值时改变 Bool           |
 
 ## 示例 Avatar
 
@@ -33,4 +45,5 @@ minasaki
 ## 参考了以下代码：
 
 [Mi Band/Amazfit OSC heart rate monitor for VRChat](https://github.com/vard88508/vrc-osc-miband-hrm)
+
 [Mi Band Heartrate](https://github.com/mkc1370/miband-heartrate-osc)

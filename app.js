@@ -23,6 +23,7 @@ rl.question('Enter Pulsoid Auth Token: ', (token) => {
   let Start = () => {
     const wspath = `/api/v1/data/real_time?access_token=${token}`
     const ws = new WS("dev.pulsoid.net", "", wspath, true)
+    let hbToggle = false
     ws.message(ev => {
       /**
        * @type {{
@@ -86,10 +87,21 @@ rl.question('Enter Pulsoid Auth Token: ', (token) => {
             type: "i",
             value: data.data.heartRate
           }
+        },
+        {
+          address: "/avatar/parameters/HeartBeatToggle",
+          args:
+          {
+            type: "b",
+            value: hbToggle
+          }
         }
       ]
       Heartrates.forEach(element => {
         client.send(element)
+        if (element.address === "/avatar/parameters/HeartBeatToggle") {
+          hbToggle = !hbToggle
+        }
       });
     })
     ws.realclose = false

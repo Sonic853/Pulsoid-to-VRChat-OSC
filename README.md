@@ -1,4 +1,5 @@
 # Pulsoid to VRChat OSC
+
 [中文文档](README_zh.md)
 
 ![Snipaste_2022-02-27_02-58-43.png](https://vip2.loli.io/2022/02/27/L8DqeOMBpbQ7T2A.png)
@@ -25,6 +26,18 @@ In theory, it can support Mi Band 3/4/5/6
 6. past Token
    ![2023-02-09_22-08-39.png](https://vip2.loli.io/2023/02/09/kcSqLRln89oOuKT.png)
 
+## Addresses ?
+
+| Addresss                            | Value Type | Description                  |
+| ----------------------------------- | ---------- | ---------------------------- |
+| /avatar/parameters/HeartRateInt     | Int        | Int [0, 255]                 |
+| /avatar/parameters/HeartRate3       | Int        | See HeartRateInt             |
+| /avatar/parameters/HeartRateFloat   | Float      | Float ([0, 255] -> [-1, 1])  |
+| /avatar/parameters/HeartRate        | Float      | See HeartRateFloat           |
+| /avatar/parameters/HeartRateFloat01 | Float      | Float ([0, 255] -> [0, 1])   |
+| /avatar/parameters/HeartRate2       | Float      | See HeartRateFloat01         |
+| /avatar/parameters/HeartBeatToggle  | Bool       | Reverses with each heartbeat |
+
 ## Example Avatars
 
 [Vard](https://twitter.com/VardFree) made this Avatar, you can use his Avatar to test: [Example_Avatar.unitypackage](https://github.com/vard88508/vrc-osc-miband-hrm/releases) (This Avatar uses RED_SIM's [Simple counter shader](https://patreon.com/posts/simple-counter-62864361) to display numbers)
@@ -34,4 +47,5 @@ The value used by this Avatar is `Heartrate`, which is of type Float and ranges 
 ## The following code is referenced:
 
 [Mi Band/Amazfit OSC heart rate monitor for VRChat](https://github.com/vard88508/vrc-osc-miband-hrm)
+
 [Mi Band Heartrate](https://github.com/mkc1370/miband-heartrate-osc)

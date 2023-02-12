@@ -106,3 +106,4 @@ dist
 
 bin/
 package-lock.json
+token.txt

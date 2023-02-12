@@ -1,4 +1,5 @@
 const WebSocket = require('ws')
+const fs = require('fs')
 class WS {
   ip = ""
   port = ""
@@ -187,5 +188,21 @@ const stringIsnullOrEmpty = (str) => {
   if (str == null || str == undefined || str == "") return true
   return false
 }
+/**
+ * 
+ * @param {string} path 
+ * @returns {string}
+ */
+const ReadFile = (path) => {
+  // 判断文件是否存在
+  if (!fs.existsSync(path)) {
+    return ""
+  }
+  // 读取文件
+  const main = fs.readFileSync(path, "utf-8")
+  return main
+}
 exports.getUuid = getUuid
 exports.WS = WS
+exports.stringIsnullOrEmpty = stringIsnullOrEmpty
+exports.ReadFile = ReadFile

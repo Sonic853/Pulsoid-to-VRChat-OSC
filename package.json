@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "run": "node --inspect app.js"
+    "run": "node --inspect app.js",
+    "authAndRun": "node --inspect startAuth.js"
   },
   "author": "Sonic853",
   "license": "MIT",

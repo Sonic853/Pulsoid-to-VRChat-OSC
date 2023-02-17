@@ -12,13 +12,14 @@ const RunPulsoid = (token) => {
   ws.message(ev => {
     /**
      * @type {{
-     *  data: {
-     *   heartRate: number
+     * measured_at: number
+     * data: {
+     *  heart_rate: number
      * }
      * }}
      */
     const data = JSON.parse(ev)
-    const heartRate = data?.data?.heartRate
+    const heartRate = data?.data?.heart_rate
     if (!heartRate) return console.log('Got heart rate: 0 bpm, skipping parameter update...')
     console.log('Got heart rate: %s bpm', heartRate)
     const client = new Client('localhost', 9000)
@@ -30,7 +31,7 @@ const RunPulsoid = (token) => {
         args:
         {
           type: 'f',
-          value: data.data.heartRate / 127 - 1
+          value: heartRate / 127 - 1
         }
       },
       {
@@ -38,7 +39,7 @@ const RunPulsoid = (token) => {
         args:
         {
           type: "f",
-          value: data.data.heartRate / 127 - 1
+          value: heartRate / 127 - 1
         }
       },
       {
@@ -46,7 +47,7 @@ const RunPulsoid = (token) => {
         args:
         {
           type: "f",
-          value: data.data.heartRate / 255
+          value: heartRate / 255
         }
       },
       {
@@ -54,7 +55,7 @@ const RunPulsoid = (token) => {
         args:
         {
           type: "f",
-          value: data.data.heartRate / 255
+          value: heartRate / 255
         }
       },
       {
@@ -62,7 +63,7 @@ const RunPulsoid = (token) => {
         args:
         {
           type: "i",
-          value: data.data.heartRate
+          value: heartRate
         }
       },
       {
@@ -70,7 +71,7 @@ const RunPulsoid = (token) => {
         args:
         {
           type: "i",
-          value: data.data.heartRate
+          value: heartRate
         }
       },
       {

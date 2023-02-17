@@ -11,14 +11,16 @@ This is a software that allows you to use a heart rate bracelet to send heart ra
 
 ## Supported devices?
 
+Check This: https://www.blog.pulsoid.net/monitors
+
 In theory, it can support Mi Band 3/4/5/6
 
 ## how to use?
 
-1. Open Mi Sports, select the heart rate bracelet you want to use, and turn on the Bluetooth broadcast and exercise heart rate broadcast `<br>`
+1. Open Mi Sports, select the heart rate bracelet you want to use, and turn on the Bluetooth broadcast and exercise heart rate broadcast <br>
    ![20220227-031824757.jpg](https://vip2.loli.io/2022/02/27/7CKeypYB3AQHo2z.jpg)
 2. Install Pulsoid on your mobile phone and register an account
-3. Connect the heart rate bracelet to be used `<br>`
+3. Connect the heart rate bracelet to be used <br>
    ![20220227-031829402.jpg](https://vip1.loli.io/2022/02/27/ik9vORBDCKHMZmr.jpg)
 4. run.bat
 5. The program will automatically open the browser and require you to log in for verification. After logging in, click the "Copy to clipboard" button to copy the token

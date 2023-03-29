@@ -18,7 +18,14 @@ const RunPulsoid = (token) => {
      * }
      * }}
      */
-    const data = JSON.parse(ev)
+    let data
+    try {
+      data = JSON.parse(ev)
+    } catch (error) {
+      console.log(`data: ${ev}`)
+      console.error('Failed to parse data from Pulsoid. Skipping parameter update...')
+      return
+    }
     const heartRate = data?.data?.heart_rate
     if (!heartRate) return console.log('Got heart rate: 0 bpm, skipping parameter update...')
     console.log('Got heart rate: %s bpm', heartRate)

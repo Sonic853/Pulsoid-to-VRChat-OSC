@@ -26,7 +26,7 @@ class WS {
   async connect(callback) {
     this.ws = new WebSocket(this.url)
     this.ws.onmessage = e => {
-      this.#delegats.run(e)
+      this.#delegats.run(e.data.toString())
     }
     this.ws.onclose = async e => {
       if (!this.realclose) {
@@ -121,7 +121,7 @@ class Delegates {
   }
   run(...t) {
     if (this.list.length != 0) for (let i = 0; i < this.list.length; i++) {
-      setTimeout(() => { this.list[i].e(...t) })
+      this.list[i].e(...arguments)
     }
   }
   /**

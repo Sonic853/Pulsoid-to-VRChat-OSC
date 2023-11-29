@@ -5,10 +5,11 @@ const { Client } = require('node-osc')
  * 
  * @param {string} token 
  */
-const RunPulsoid = (token) => {
+const RunPulsoid = (token, maxconsolelog = NaN) => {
   const wspath = `/api/v1/data/real_time?access_token=${token}`
   const ws = new WS("dev.pulsoid.net", "", wspath, true)
   let hbToggle = false
+  let logCount = 0
   ws.message(ev => {
     /**
      * @type {{
@@ -28,6 +29,11 @@ const RunPulsoid = (token) => {
     }
     const heartRate = data?.data?.heart_rate
     if (!heartRate) return console.log('Got heart rate: 0 bpm, skipping parameter update...')
+    logCount++
+    if (maxconsolelog !== NaN && logCount >= maxconsolelog) {
+      logCount = 0
+      console.clear()
+    }
     console.log('Got heart rate: %s bpm', heartRate)
     const client = new Client('localhost', 9000)
     // 参考自该代码：

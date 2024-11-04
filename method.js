@@ -172,10 +172,16 @@ class Delegates {
     return i
   }
 }
+/**
+ * 
+ * @param {number} ms 
+ * @returns 
+ */
+const snooze = ms => new Promise(resolve => setTimeout(resolve, ms))
 const RList = new class {
   time = 3000
   #list = -1
-  snooze = ms => new Promise(resolve => setTimeout(resolve, ms))
+  snooze = snooze
   async Push() {
     this.#list++
     await this.snooze(this.#list * this.time)
@@ -206,3 +212,4 @@ exports.getUuid = getUuid
 exports.WS = WS
 exports.stringIsnullOrEmpty = stringIsnullOrEmpty
 exports.ReadFile = ReadFile
+exports.snooze = snooze

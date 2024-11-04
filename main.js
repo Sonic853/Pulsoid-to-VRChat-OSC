@@ -9,6 +9,13 @@ const RunPulsoid = (token, maxconsolelog = NaN) => {
   const wspath = `/api/v1/data/real_time?access_token=${token}`
   const ws = new WS("dev.pulsoid.net", "", wspath, true)
   let hbToggle = false
+
+  const _hbToggle2ft = 250
+  // hbToggle2 false time
+  let hbToggle2ft = 250
+  let hbToggle2ftt = NaN
+  let hbToggle2st = -1
+
   let logCount = 0
   ws.message(ev => {
     /**
@@ -94,12 +101,49 @@ const RunPulsoid = (token, maxconsolelog = NaN) => {
           type: "b",
           value: hbToggle
         }
+      },
+      {
+        address: "/avatar/parameters/HeartBeatToggle2",
+        args:
+        {
+          type: "b",
+          value: true
+        }
       }
     ]
     Heartrates.forEach(element => {
       client.send(element)
       if (element.address === "/avatar/parameters/HeartBeatToggle") {
         hbToggle = !hbToggle
+      }
+      else if (element.address === "/avatar/parameters/HeartBeatToggle2") {
+        if (hbToggle2st === -1) {
+          hbToggle2st = Date.now()
+          hbToggle2ftt = setTimeout(() => {
+            let _element = {
+              ...element
+            }
+            _element.args.value = false
+            client.send(_element)
+          }, hbToggle2ft)
+        }
+        else {
+          const nowTime = Date.now()
+          if (nowTime - hbToggle2st < hbToggle2ft) {
+            if (hbToggle2ftt !== NaN) clearTimeout(hbToggle2ftt)
+            hbToggle2ft = (nowTime - hbToggle2st) / 2
+          }
+          else if (nowTime - hbToggle2st > _hbToggle2ft * 2) {
+            hbToggle2ft = _hbToggle2ft
+          }
+          hbToggle2ftt = setTimeout(() => {
+            let _element = {
+              ...element
+            }
+            _element.args.value = false
+            client.send(_element)
+          }, hbToggle2ft)
+        }
       }
     });
   })
